@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jquery post</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+   
+  
+
+
+    <script src="../js/EncodeDecode.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+<body><div id="main">
+    
+    </div>
+
+
+
+    <script>
+        $(document).on('click', '#Publicize', function () {
+
+            var PageName = $("#PageName b").text();
+            //  var PageName = PageName.replace("@", "");
+            var mystor = $("#main").html();
+
+
+            var getmyFile = $("#getFile").val();
+
+
+
+
+            SavePage(PageName); //Save
+
+            PublishData(PageName, mystor); //publish page => @+name + html in root
+
+
+        });
+
+
+        // HIER SAVEPAGE IVULLEN 
+
+        function PublishData(PageName, mycontent) {
+            alert("html die ik doorgeef" + mycontent);
+            $.post("../CONTROLLER/createHtmlPageHandler.ashx",
+                      
+                       {
+                           name: PageName,
+                           Content: mycontent
+
+                       },
+                       function (data, status) {
+
+                           $("#PageName b").append(PageName + "gepubliceerd");
+
+                           ExtractString(data);
+
+                       });
+
+
+        }
+    </script>
+</body>
+</html>
