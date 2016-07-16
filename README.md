@@ -1,6 +1,8 @@
 # Jquery-post-html-to-ashx-
 ajax post html and write to file via ashx handler <br>
 
+will NOT work without    httpRuntime requestValidationMode="2.0" => webconfig system.web  
+
    
 
 1) jquery post <br>
